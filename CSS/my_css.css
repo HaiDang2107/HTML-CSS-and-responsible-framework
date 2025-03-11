@@ -1,0 +1,86 @@
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Roboto", sans-serif;
+}
+
+.w3-sidebar {
+    z-index: 3;
+    width: 250px;
+    top: 43px;
+    bottom: 0;
+    height: inherit;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.image {
+    margin-right: 20px;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.item1 {
+    flex: 4.5;
+    margin-right: 20px;
+}
+
+.item2 {
+    flex: 2;
+}
+
+h2 {
+    display: inline;
+}
+
+summary {
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Ẩn mũi tên mặc định */
+summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Khi thẻ details mở rộng */
+details[open] summary::before {
+    transform: rotate(90deg);
+    /* Xoay mũi tên khi thẻ details mở rộng */
+}
+
+.footer-layout {
+    display: grid;
+    grid-template-columns: 3.5fr 1fr;
+}
+
+a {
+    text-decoration: none; /* Loại bỏ gạch chân mặc định */
+}
+
+.box-style {
+    border-bottom-right-radius: 15px; /* Bo góc dưới bên phải */
+    background-color: #26d4ef;
+    overflow: hidden; /* Ẩn phần ảnh hoặc nội dung vượt ra ngoài các góc */
+    border: 2px solid #ccc; /* Thêm đường viền để dễ nhìn thấy bo góc */
+}
+
+.box-style-main {
+    border-bottom-right-radius: 15px; /* Bo góc dưới bên phải */
+    border-top-right-radius: 15px; /* Bo góc dưới bên phải */
+    background-color: #e7e48a;
+    overflow: hidden; /* Ẩn phần ảnh hoặc nội dung vượt ra ngoài các góc */
+    border: 1px solid #ccc; /* Thêm đường viền để dễ nhìn thấy bo góc */
+}

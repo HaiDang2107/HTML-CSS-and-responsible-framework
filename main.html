@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>W3.CSS Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="./CSS/my_css.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div class="w3-top">
+    <div class="w3-bar box-style w3-top w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large"
+        href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+      <a href="#" onclick="changeMain('e-services')" class="w3-bar-item w3-button w3-theme-l1"><span
+          class="material-icons" style="font-size: 24px; vertical-align: middle;">laptop</span>Web Technologies and
+        e-Services</a>
+      <a onclick="changeMain('subject-info')" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Subject
+        Information</a>
+      <a href="#" onclick="changeMain('web-tech')" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Web
+        Technologies</a>
+      <a href="#" onclick="changeMain('student-info')"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">Student Information</a>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()"
+      class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <div style="background: rgba(128, 128, 128, 0.588);"><h4 class="w3-bar-item"><b>Menu</b></h4></div>
+    <div id="sb">
+    </div>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor: pointer" title="close side menu"
+    id="myOverlay"></div>
+
+  <!-- Sidebar -->
+  <div id="main">
+  </div>
+
+  <footer id="myFooter">
+    <div class="w3-container w3-theme-l2 w3-padding-32">
+      <div class="footer-layout">
+        <div></div>
+        <div>
+          <p class="second-column"><span class="material-icons icon">phone</span> 038xxxxx01</p>
+          <p class="second-column"><span class="material-icons icon">email</span> Dang.VH226021@sis.hust.edu.vn</p>
+          <p class="second-column"><span class="material-icons icon">home</span> 296 Minh Khai, phường Mai Động, quận
+            Hoàng Mai, Hà Nội</p>
+          <a href="https://www.facebook.com/vu.hai.ang.873609/" target="_blank">
+            <span class="material-icons icon">facebook</span>
+          </a>
+          <a href="https://www.google.com/maps/place/296+P.+Minh+Khai,+Mai+%C4%90%E1%BB%99ng,+Hai+B%C3%A0+Tr%C6%B0ng,+H%C3%A0+N%E1%BB%99i,+Vietnam/@20.9955194,105.857762,17z/data=!3m1!4b1!4m6!3m5!1s0x3135ac0e24c54d8f:0x6716d1df9f0046b5!8m2!3d20.9955194!4d105.8603369!16s%2Fg%2F11c1_n9lxd?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank">
+            <span class="material-icons icon">location_on</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container w3-theme-l1">
+      <p style="text-align: right">Powered by <a href="https://www.w3schools.com/w3css/default.asp"
+          target="_blank">w3.css</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Get the Sidebar
+    var mySidebar = document.getElementById("mySidebar");
+
+    // Get the DIV with overlay effect
+    var overlayBg = document.getElementById("myOverlay");
+
+    // Toggle between showing and hiding the sidebar, and add overlay effect
+    function w3_open() {
+      if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+        overlayBg.style.display = "none";
+      } else {
+        mySidebar.style.display = 'block';
+        overlayBg.style.display = "block";
+      }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+      mySidebar.style.display = "none";
+      overlayBg.style.display = "none";
+    }
+
+    window.onload = function () {
+      var newContent = `
+        <a class="w3-bar-item w3-button w3-hover-black" href="#open-info">Opening Information</a>
+        <a class="w3-bar-item w3-button w3-hover-black" href="#semina-info">Seminar Information</a>
+        <a class="w3-bar-item w3-button w3-hover-black" href="#notab-news">Notable News</a>
+      `;
+      // Chèn nội dung vào phần tử có id="main"
+      document.getElementById('sb').innerHTML = newContent;
+      fetch('IT4409.html')
+        .then(response => {
+          // xử lý phản hồi từ máy chủ
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById("main").innerHTML = data;
+        })
+        .catch(error => {
+          // xử lý lỗi
+        });
+    };
+
+    function changeMain(section) {
+      if (section === 'e-services') {
+        var newContent = `
+          <a class="w3-bar-item w3-button w3-hover-black" href="#open-info">Opening Information</a>
+          <a class="w3-bar-item w3-button w3-hover-black" href="#semina-info">Seminar Information</a>
+          <a class="w3-bar-item w3-button w3-hover-black" href="#notab-news">Notable News</a>
+        `;
+        // Chèn nội dung vào phần tử có id="main"
+        document.getElementById('sb').innerHTML = newContent;
+        fetch('IT4409.html')
+          .then(response => {
+            // xử lý phản hồi từ máy chủ
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.text();
+          })
+          .then(data => {
+            document.getElementById("main").innerHTML = data;
+          })
+          .catch(error => {
+            // xử lý lỗi
+          });
+      } else if (section === "subject-info") {
+        var newContent = `
+          <a class="w3-bar-item w3-button w3-hover-black" href="#overview">Overview</a>
+          <a class="w3-bar-item w3-button w3-hover-black" href="#description">Description</a>
+          <a class="w3-bar-item w3-button w3-hover-black" href="#content">Content</a>
+          <a class="w3-bar-item w3-button w3-hover-black" href="#ref-doc">Reference Documents</a>
+        `;
+        // Chèn nội dung vào phần tử có id="main"
+        document.getElementById('sb').innerHTML = newContent;
+        fetch('Subject_Information.html')
+          .then(response => {
+            // xử lý phản hồi từ máy chủ
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.text();
+          })
+          .then(data => {
+            document.getElementById("main").innerHTML = data;
+          })
+          .catch(error => {
+            // xử lý lỗi
+          });
+      } else if (section === "web-tech") {
+        var newContent = `
+          <a class="w3-bar-item w3-button w3-hover-black" href="#html">HTML</a>
+          <a class="w3-bar-item w3-button w3-hover-black" href="#css">CSS</a>
+          <a class="w3-bar-item w3-button w3-hover-black" href="#js">JavaScript</a>
+        `;
+        // Chèn nội dung vào phần tử có id="main"
+        document.getElementById('sb').innerHTML = newContent;
+        fetch('Web_Technologies.html')
+          .then(response => {
+            // xử lý phản hồi từ máy chủ
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.text();
+          })
+          .then(data => {
+            document.getElementById("main").innerHTML = data;
+          })
+          .catch(error => {
+            // xử lý lỗi
+          });
+      } else if (section === "student-info") {
+        var newContent = `
+          <a class="w3-bar-item w3-button w3-hover-black" href="#personal-info">Personal Information</a>
+          <a class="w3-bar-item w3-button w3-hover-black" href="#exp">Experience with Web Technologies</a>
+          <a class="w3-bar-item w3-button w3-hover-black" href="#projects">Projects</a>
+        `;
+        // Chèn nội dung vào phần tử có id="main"
+        document.getElementById('sb').innerHTML = newContent;
+        fetch('Student_Information.html')
+          .then(response => {
+            // xử lý phản hồi từ máy chủ
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.text();
+          })
+          .then(data => {
+            document.getElementById("main").innerHTML = data;
+          })
+          .catch(error => {
+            // xử lý lỗi
+          });
+      }
+    }
+  </script>
+
+</body>
+
+</html>
